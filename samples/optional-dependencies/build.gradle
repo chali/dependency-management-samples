@@ -1,0 +1,20 @@
+repositories {
+   jcenter()
+}
+
+configurations {
+   conf
+}
+
+dependencies {
+   // hard dependency on Ant
+   conf 'org.apache.ant:ant:1.8.4'
+
+   // hard dependency on Groovy
+   conf 'org.codehaus.groovy:groovy:2.4.12' 
+      // brings in "Ant 1.9.4" as an *optional* dependency
+      // but also "jansi" and "gpars" as optional
+}
+
+defaultTasks = ['dependencies']
+
