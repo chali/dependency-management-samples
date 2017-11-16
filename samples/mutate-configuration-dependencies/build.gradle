@@ -1,0 +1,48 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+group 'org.sample'
+version '1.0'
+
+repositories {
+   jcenter()
+}
+
+dependencies {
+   api 'org.springframework:spring-beans'
+   api 'org.springframework:spring-context'
+   api 'org.springframework:spring-core'
+
+   implementation 'commons-collections:commons-collections:3.2.0'
+   implementation 'org.apache.ant:ant:1.9.0'
+}
+
+// Unlike `beforeResolve`, only needs to apply to the _declaring_ configuration.
+// These mutations show up when resolving a child configuration like 'compileClasspath'.
+configurations.api.withDependencies { DependencySet deps ->
+    deps.each { dep ->
+        if (dep.group == 'org.springframework') {
+            dep.version { prefer '4.3.12.RELEASE'}
+        }
+    }
+}
+
+// Can modify dependency set directly: add/remove/modify before resolving
+configurations.implementation.withDependencies { DependencySet deps ->
+    deps.find({ it.name == 'commons-collections' }).version { prefer '3.2.1' }
+    deps.remove deps.find { it.name == 'ant' }
+    deps.add project.dependencies.create('commons-codec:commons-codec:1.6')
+}
+
+// Publications honour the dependency modifications
+publishing {
+    repositories {
+        maven { url "${buildDir}/repo" }
+    }
+    publications {
+        maven(MavenPublication) { from components.java }
+    }
+}
+
+defaultTasks = ['dependencies']
