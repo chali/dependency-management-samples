@@ -1,0 +1,18 @@
+plugins {
+    id "java"
+}
+repositories {
+    jcenter()
+}
+dependencies {
+    // Import the spring-boot-dependencies BOM to define the versions of my dependencies
+    implementation "org.springframework.boot:spring-boot-dependencies:1.5.8.RELEASE"
+
+    implementation "org.springframework.boot:spring-boot"
+    implementation "org.springframework.boot:spring-boot-autoconfigure"
+
+    testImplementation "junit:junit"
+    testImplementation "org.springframework:spring-test"
+    testImplementation "org.springframework.boot:spring-boot-test"
+    testImplementation "org.springframework.boot:spring-boot-test-autoconfigure"
+}

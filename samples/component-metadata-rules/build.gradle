@@ -1,0 +1,37 @@
+plugins {
+    id "java"
+}
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.apache.httpcomponents:httpclient:4.5.3'
+    implementation('commons-codec:commons-codec') {
+        version { strictly '1.6' }
+    }
+
+    testImplementation 'org.apache.velocity:velocity:1.7'
+    testImplementation('commons-collections:commons-collections') {
+        version { strictly '3.1' }
+    }
+
+    components {
+        withModule('org.apache.httpcomponents:httpclient') {
+            withVariant('default') {
+                withDependencies {
+                    // httpclient can work with all 1.1+ versions of codec and not only 1.9 as declared in pom
+                    it.findAll { it.group == 'commons-codec' }.each { it.version = '1.1' }
+                }
+            }
+        }
+        withModule('org.apache.velocity:velocity') {
+            withVariant('default') {
+                withDependencies {
+                    // velocity can work with all 3.x versions of collections and not only 3.2.1 as declared in pom
+                    it.findAll { it.group == 'commons-collections' }.each { it.version = '3.0' }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+plugins {
+    id "java"
+}
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.apache.httpcomponents:httpclient:4.5.3'
+    implementation('commons-codec:commons-codec') {
+        version { strictly '1.6' }
+    }
+
+    testImplementation 'org.apache.velocity:velocity:1.7'
+    testImplementation('commons-collections:commons-collections') {
+        version { strictly '3.1' }
+    }
+}
+
+gradle.buildFinished {
+    println ""
+    println "> This build always fails with dependency conflicts that cannot be resolved due to strict version constraints."
+    println "> Check the '../component-metadata-rules' sample that demonstrates how to resolve the conflict with metadata rules."
+}
