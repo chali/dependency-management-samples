@@ -16,3 +16,5 @@ dependencies {
     testImplementation "org.springframework.boot:spring-boot-test"
     testImplementation "org.springframework.boot:spring-boot-test-autoconfigure"
 }
+
+defaultTasks = ['dependencies']
