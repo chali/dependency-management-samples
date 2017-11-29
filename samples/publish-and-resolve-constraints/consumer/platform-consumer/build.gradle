@@ -1,0 +1,12 @@
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    api 'org.samples.constraints-publish:platform:1.0'
+
+    api 'org.springframework:spring-core'
+    api 'org.springframework:spring-beans'
+
+    implementation 'commons-collections:commons-collections'
+}

@@ -1,0 +1,4 @@
+gradle.experimentalFeatures.enable()
+rootProject.name = 'producer'
+
+include 'platform', 'library'

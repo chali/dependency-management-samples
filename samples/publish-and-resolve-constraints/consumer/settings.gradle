@@ -1,0 +1,4 @@
+gradle.experimentalFeatures.enable()
+rootProject.name = 'consumer'
+
+include 'library-consumer', 'platform-consumer'

@@ -1,0 +1,18 @@
+subprojects {
+    repositories {
+        maven {
+            url "../../repo"
+        }
+        jcenter()
+    }
+
+    task resolve {
+        doLast {
+            println configurations.runtimeClasspath.collect { it.name }
+        }
+    }
+}
+
+task deps {
+    dependsOn(':library-consumer:dependencies', ':platform-consumer:dependencies')
+}

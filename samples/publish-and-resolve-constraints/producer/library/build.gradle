@@ -1,0 +1,29 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    api project(':platform')
+    api 'org.springframework:spring-core'
+    api 'org.springframework:spring-beans'
+
+    implementation 'commons-collections:commons-collections'
+}
+
+publishing {
+    repositories {
+        maven {
+            url "../../repo"
+        }
+    }
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}

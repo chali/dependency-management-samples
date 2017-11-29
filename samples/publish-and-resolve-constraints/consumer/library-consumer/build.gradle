@@ -1,0 +1,7 @@
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    api 'org.samples.constraints-publish:library:1.0'
+}

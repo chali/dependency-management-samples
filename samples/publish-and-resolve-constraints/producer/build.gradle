@@ -1,0 +1,4 @@
+allprojects {
+    group 'org.samples.constraints-publish'
+    version '1.0'
+}
