@@ -1,0 +1,26 @@
+
+repositories {
+    jcenter {
+       metadataSources {
+          mavenPom() // look for Maven POM files
+          // but do not look for artifact
+          //artifact()
+       }
+    }
+}
+
+configurations { implementation }
+
+
+dependencies {
+    implementation 'org.foo:missing:1.0'
+}
+
+defaultTasks = ['dependencies']
+
+gradle.buildFinished {
+    println ""
+    println "> This build always fails with a dependency that cannot be resolved."
+    println "> But it will show that the only thing we tried to get is the POM file, not a jar (run with `--scan` to get details)"
+}
+
