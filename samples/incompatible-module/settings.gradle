@@ -1,2 +1,2 @@
 gradle.experimentalFeatures.enable()
-rootProject.name = 'dependency-constraints'
+rootProject.name = 'incompatible-constraints'
