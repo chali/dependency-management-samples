@@ -1,0 +1,13 @@
+# Dependency constraints: publish and resolve
+
+Dependency constraints are a powerful new feature in Gradle dependency management. A dependency constraint provides control over which dependency versions will be resolved, without requiring a direct dependency from the declaring module.
+
+Dependency constraints are similar to dependency resolution rules (applied to `resolutionStrategy`) but they are *published* as part of the module metadata and then available to consumers of the published module. This means that a consuming project does not need to apply the same rules as the producing project: these constraints are brought in through regular dependency resolution.
+
+One use of dependency constraints is to define a set of dependency versions that are known to work well together. In Maven this is referred to as a 'Bill of Materials' (BOM). In Gradle, we refer to this as a 'platform'. Dependency constraints allow these versions to to declared together in a 'platform' module, and a consuming project can declare dependencies without any 'version'.
+
+### Example
+
+This sample demonstrates a Gradle project that produces a `java-library` platform (`producer/platform`), as well as a `java-library` project that consumes this as a project dependency within a multiproject build (`producer/library`). 
+
+The `consumer` build demonstrates a Gradle project that consumes published dependency constraints. The `producer` project can be _published_ to a local Maven repository, and the `consumer` projects will resolve the published modules. The `consumer/platform-consumer` project has a dependency on the published `:platform` module, while the `consumer/library-consumer` has a dependency on the published `:library` module. Note that the `:library` module brings in the `:platform` module transitively.
