@@ -1,11 +1,14 @@
-It is now possible to provide a rule(s) to modify the dependencies of a configuration before it is used. See here for motivation
+It is now possible to provide a rule(s) to modify the dependencies of a configuration before it is used. 
 
-This method allows plugin to provide logic that adds/removes/modifies the set of dependencies for a project configuration. Each `withDependencies` action will be evaluated before the configuration is consumed: for resolution, publishing or other purpose. Actions will evaluated only once per build execution, and will be deferred until the configuration is actually used.
+The `Configuration.withDependencies()` method allows plugin to provide logic that adds/removes/modifies the set of dependencies for a project configuration. Each `withDependencies` action will be evaluated before the configuration is consumed: for resolution, publishing or other purpose. Actions will evaluated only once per build execution, and will be deferred until the configuration is actually used.
 
-Use cases
-The nebula.dependency-recommender and io.spring.dependency-management plugins use the beforeResolve hook to provide versions for declared dependencies of a project. The modified versions should automatically be included wherever that project is consumed, whether by project dependency, composite build or published metadata.
-Build logic provides dependency information for a project that is expensive to calculate. This calculation should not be performed until dependencies are actually required for resolution or publishing.
+### Use cases
+1. The `nebula.dependency-recommender` and `io.spring.dependency-management` plugins provide versions for declared dependencies of a `Configuration`, and these versions should automatically be available wherever that project is consumed, whether by project dependency, composite build or published metadata. The `beforeResolve` hook does not satisfy this requirement: the modified dependencies are only available when resolving the configuration, but not when it is consumed as a project dependency or published to an Ivy/Maven repository.
+2. Build logic provides dependency information for a project that is expensive to calculate. This calculation should not be performed until dependencies are actually required for resolution or publishing.
 
+### Example
+
+```
 configurations.compile.withDependencies { deps ->
    def foo = deps.find { it.name == 'foo' }
    assert foo.version == null
@@ -15,10 +18,12 @@ configurations.compile.withDependencies { deps ->
    assert bar.version == '2.2'
    bar.version { prefer null }
 }
+```
 
-This functionality should replace the use of `configuration.incoming.beforeResolve`, in many dependency management plugins. The benefits of `withDependencies` over `beforeResolve` are:
-The rule applies to the declaring configuration rather than the resolving configuration. This means that it's not necessary to use `configurations.all*.` to have a rule that will apply to the all extending configurations.
-Dependency modifications will be included when publishing using `ivy-publish` or `maven-publish`
-Dependency mutations will be applied when a configuration is consumed as a project dependency. (With `beforeResolve`, all consuming projects would need to apply the same mutation rules)
-Dependency mutations will be applied when a project configuration is consumed as part of a composite build. (Removing the need for the consuming build to apply the mutation rules).
+### Benefits
+This method should replace the use of `configuration.incoming.beforeResolve` in many dependency management plugins. The benefits of `withDependencies` over `beforeResolve` are:
+- Supplied action applies to the declaring configuration rather than the resolving configuration. This means that it's not necessary to apply the rule to all child configurations.
+- Dependency modifications will be included when publishing using `ivy-publish` or `maven-publish`
+- Dependency mutations will be applied when a configuration is consumed as a project dependency. (When using `beforeResolve`, all consuming projects would need to apply the same `beforeResolve` action)
+- Dependency mutations will be applied when a project configuration is consumed as part of a composite build. (Removing the need for the consuming build to apply the mutation rules).
 
