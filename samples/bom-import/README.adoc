@@ -1,0 +1,24 @@
+## Importing Maven Bill of Materials (BOMs)
+
+Gradle now supports the import of BOMs by declaring them as dependencies. 
+Each `<dependencyManagement>` entry in the BOM will be applied as a dependency constraint to the consuming project.
+This allows the consuming project to declare dependencies without versions and using a BOM to derive a set of compatible versions. 
+
+### Spring boot example
+
+```
+dependencies {
+    // Import the Spring Boot BOM
+    implementation "org.springframework.boot:spring-boot-dependencies:1.5.8.RELEASE" 
+
+    implementation "org.springframework.boot:spring-boot"
+    implementation "org.springframework.boot:spring-boot-autoconfigure"
+
+    testImplementation "junit:junit"
+    testImplementation "org.springframework:spring-test"
+    testImplementation "org.springframework.boot:spring-boot-test"
+    testImplementation "org.springframework.boot:spring-boot-test-autoconfigure"
+}
+```
+
+Note that the BOM dependency will be included when the project is published, and the dependency constraints from the BOM will be available transitively.
