@@ -1,0 +1,39 @@
+repositories {
+    jcenter()
+}
+
+configurations { 
+   implementation
+}
+
+dependencies {
+    constraints {
+        implementation('org.slf4j:slf4j-jdk14') {
+            version { rejectAll() }
+        }
+    }
+    implementation 'org.slf4j:log4j-over-slf4j:1.7.25'
+    implementation 'org.apache.cxf:cxf-rt-transports-http-jetty:2.0.9'
+    
+    if (project.hasProperty('fix')) {
+       components {
+           withModule('org.apache.cxf:cxf-rt-transports-http-jetty') {
+               withVariant('default') {
+                   withDependencies {
+                      removeAll { it.name == 'slf4j-jdk14' }
+                   }
+                }
+            }
+        }
+    }
+}
+
+defaultTasks = ['dependencies']
+
+gradle.buildFinished {
+    println ""
+    println "> This build always fails with dependency conflicts that cannot be resolved because of a constraint stating that you cannot have both log4j-over-slf4j and slf4j-jdk14 on classpath."
+    println "> Run with `-Pfix` to enable the code that demonstrates how to resolve conflicts with metadata rules."
+}
+
+

@@ -1,0 +1,2 @@
+gradle.experimentalFeatures.enable()
+rootProject.name = 'dependency-constraints'
