@@ -1,0 +1,22 @@
+dependencies {
+    // requires the logging project
+    implementation project(':logging')
+    
+    // this will transitively bring slf4j-jdk14
+    implementation 'org.apache.cxf:cxf-rt-transports-http-jetty:2.0.9'
+ 
+    // run with `-Pfix` to enable the fix   
+    if (rootProject.hasProperty('fix')) {
+       components {
+           withModule('org.apache.cxf:cxf-rt-transports-http-jetty') {
+               withVariant('default') {
+                   withDependencies {
+                      removeAll { it.name == 'slf4j-jdk14' }
+                   }
+                }
+            }
+        }
+    }
+    
+}
+

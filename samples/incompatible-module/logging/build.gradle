@@ -1,0 +1,15 @@
+dependencies {
+
+    constraints {
+        // This module uses log4j over slf4j, so let's make sure that whenever
+        // a consumer is going to bring slf4j-jdk14, we break the build
+        // because one cannot live with the other at the same time
+        implementation('org.slf4j:slf4j-jdk14') {
+            version { rejectAll() }
+        }
+    }
+
+    implementation 'org.slf4j:log4j-over-slf4j:1.7.25'    
+
+}
+
