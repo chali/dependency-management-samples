@@ -1,0 +1,21 @@
+## Modify dependency constraints in component metadata rules
+
+Component metadata rules also support adding and removing dependency constraints. This also works if the metadata
+is sourced from a format (e.g. a POM file) that does not support constraints as such.
+
+```
+dependencies {
+     components {
+         // if 'org:example' is part of my dependency tree and 'commons-codec' is added, use at least version 1.10
+         withModule('org:example') {
+             withVariant('default') {
+                 withDependencyConstraints { dc ->
+                     add 'commons-codec:commons-codec:1.10'
+                 }
+             }
+         }
+     }
+ }
+```
+
+Note: Maven optional dependencies defined in a POM are exposed as dependency constraints.

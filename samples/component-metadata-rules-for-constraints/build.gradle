@@ -1,0 +1,24 @@
+plugins {
+    id "java"
+}
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.apache.httpcomponents:httpclient:4.3.4'
+    testImplementation 'org.apache.velocity:velocity:1.7'
+
+    // if velocity is added, then httpclient needs to be at least '4.5.3'
+    components {
+        withModule('org.apache.velocity:velocity') {
+            withVariant('default') {
+                withDependencyConstraints {
+                    it.add 'org.apache.httpcomponents:httpclient:4.5.3'
+                }
+            }
+        }
+    }
+}
+
+defaultTasks = ['dependencies']
