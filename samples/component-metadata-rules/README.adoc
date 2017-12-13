@@ -1,0 +1,30 @@
+## Modify dependencies in component metadata rules
+
+Component metadata rules now support adding and removing dependencies in case the published metadata is flawed or too
+strict. This can be used for example to adjust version ranges of dependencies.
+
+```
+dependencies {
+     components {
+         withModule('net.sourceforge.nekohtml:nekohtml') {
+             withVariant('default') {
+                 withDependencies { deps ->
+                     // adjust the preferred version of all dependencies of a group
+                     deps.findAll { it.group == 'xerces' }.each {
+                         it.version  { prefer '2.11.0' }
+                     }
+                 }
+             }
+         }
+         withModule('org.eclipse.jgit:org.eclipse.jgit') {
+             withVariant('default') {
+                 withDependencies { deps ->
+                     // remove all dependencies of a group
+                     deps.removeAll { it.group == 'com.googlecode.javaewah' }
+                 }
+             }
+         }
+     }
+ }
+
+```

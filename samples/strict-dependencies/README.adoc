@@ -1,0 +1,34 @@
+## Strict Dependencies
+
+Strict dependencies allow a component to tell that a dependency version is strict, meaning that if any other version
+for the same dependency module is found in the dependency graph, and that this version disagrees with the strict
+version, then resolution will fail.
+
+Strict dependencies can be declared using the version DSL:
+
+```
+dependencies {
+    conf('org:foo') {
+       version {
+          strictly '1.0' // declares a strict dependency
+       }
+    }
+}
+```
+
+It is possible to declare strict version ranges:
+
+```
+dependencies {
+    conf('org:foo') {
+       version {
+          // any version in the 1.x range
+          strictly '[1.0, 2.0('
+       }
+    }
+}
+```
+
+It’s worth noting that strict dependencies are resolved for a project or transitively between local projects. However,
+publishing those constraints is not possible with Ivy or Maven metadata file formats. Both publishing and resolving
+strict constraints require the experimental Gradle metadata format.

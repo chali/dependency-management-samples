@@ -1,0 +1,16 @@
+## Declaring incompatibility with a module
+
+It is also possible to reject all versions of a module in a dependency constraint. Such dependency constraints can be
+used to declare incompatibilities between modules. For example, if having 2 different modules on classpath would
+introduce a compile or runtime error, it is possible to declare that they are incompatible, which would lead to a
+resolution error if they happen to be found in the same dependency graph:
+
+```
+dependencies {
+    constraints {
+        implementation('org.codehaus.groovy:groovy-all') {
+            version { rejectAll() }
+        }
+    }
+}
+```

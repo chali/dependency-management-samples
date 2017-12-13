@@ -1,0 +1,17 @@
+## Rejecting dependency versions
+
+It is possible to declare that a dependency version should be rejected. For example, if a bug is discovered, you might
+want to prevent a dependency from being upgraded.
+
+```
+dependencies {
+    implementation('org:foo') {
+        version {
+            prefer '1.0.1'
+            reject '1.0.2'
+        }
+    }
+}
+```
+
+Multiple rejections are possible (but only a single preferred version).
