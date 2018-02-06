@@ -7,7 +7,7 @@ strict. This can be used for example to adjust version ranges of dependencies.
 dependencies {
      components {
          withModule('net.sourceforge.nekohtml:nekohtml') {
-             withVariant('default') {
+            allVariants {
                  withDependencies { deps ->
                      // adjust the preferred version of all dependencies of a group
                      deps.findAll { it.group == 'xerces' }.each {
@@ -17,7 +17,7 @@ dependencies {
              }
          }
          withModule('org.eclipse.jgit:org.eclipse.jgit') {
-             withVariant('default') {
+            allVariants {
                  withDependencies { deps ->
                      // remove all dependencies of a group
                      deps.removeAll { it.group == 'com.googlecode.javaewah' }

@@ -1,4 +1,3 @@
-gradle.experimentalFeatures.enable()
 rootProject.name = 'incompatible-constraints'
 
 include 'logging'

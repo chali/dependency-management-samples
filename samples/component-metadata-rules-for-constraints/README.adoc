@@ -8,7 +8,7 @@ dependencies {
      components {
          // if 'org:example' is part of my dependency tree and 'commons-codec' is added, use at least version 1.10
          withModule('org:example') {
-             withVariant('default') {
+             allVariants {
                  withDependencyConstraints { dc ->
                      add 'commons-codec:commons-codec:1.10'
                  }

@@ -12,7 +12,7 @@ dependencies {
     // if velocity is added, then httpclient needs to be at least '4.5.3'
     components {
         withModule('org.apache.velocity:velocity') {
-            withVariant('default') {
+            allVariants {
                 withDependencyConstraints {
                     it.add 'org.apache.httpcomponents:httpclient:4.5.3'
                 }

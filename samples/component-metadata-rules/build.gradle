@@ -18,7 +18,7 @@ dependencies {
 
     components {
         withModule('org.apache.httpcomponents:httpclient') {
-            withVariant('default') {
+            allVariants {
                 withDependencies {
                     // httpclient can work with all 1.1+ versions of codec and not only 1.9 as declared in pom
                     it.findAll { it.group == 'commons-codec' }.each { it.version { prefer '1.1' } }
@@ -26,7 +26,7 @@ dependencies {
             }
         }
         withModule('org.apache.velocity:velocity') {
-            withVariant('default') {
+            allVariants {
                 withDependencies {
                     // velocity can work with all 3.x versions of collections and not only 3.2.1 as declared in pom
                     it.findAll { it.group == 'commons-collections' }.each { it.version { prefer '3.0' } }
