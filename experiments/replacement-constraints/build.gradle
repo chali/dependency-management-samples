@@ -1,0 +1,23 @@
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+    maven { url "file:repo" }
+}
+
+configurations {
+    def stage = Attribute.of('org.gradle.stage', String)
+
+    compileClasspath     { attributes.attribute(stage, 'live') }
+    runtimeClasspath     { attributes.attribute(stage, 'live') }
+    testCompileClasspath { attributes.attribute(stage, 'testing') }
+    testRuntimeClasspath { attributes.attribute(stage, 'testing') }
+}
+
+dependencies {
+    implementation 'org:main-module:1.0'
+}
+
+mainClassName = "org.example.MainClass"
+
+defaultTasks = ['dependencies', 'run', 'test']
