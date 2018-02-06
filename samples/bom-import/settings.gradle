@@ -1,2 +1,0 @@
-gradle.experimentalFeatures.enable()
-rootProject.name = 'bom-import'
