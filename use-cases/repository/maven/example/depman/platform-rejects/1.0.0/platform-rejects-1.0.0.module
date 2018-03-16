@@ -1,0 +1,133 @@
+{
+  "formatVersion": "0.3",
+  "component": {
+    "group": "example.depman",
+    "module": "platform-rejects",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "4.7-20180315091131+0000",
+      "buildId": "qkdope4cmjgivf4cp6hrwtxb3q"
+    }
+  },
+  "variants": [
+    {
+      "name": "runtime",
+      "attributes": {
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencyConstraints": [
+        {
+          "group": "sustitutionrule",
+          "module": "substitute",
+          "version": {
+            "rejects": [
+              "1.0.0"
+            ]
+          },
+          "reason": "version 1.0.0 was accidentally released from dev_branch"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "directsubstitute",
+          "version": {
+            "rejects": [
+              "2.0.0"
+            ]
+          },
+          "reason": "version 2.0.0 was accidentally released from dev_branch"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "rangesubstitute",
+          "version": {
+            "rejects": [
+              "[2.0.0,2.5.0]"
+            ]
+          },
+          "reason": "range contains a bug"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "sub-all",
+          "version": {
+            "rejects": [
+              "+"
+            ]
+          },
+          "reason": "sub-all is pure evil"
+        },
+        {
+          "group": "rejectrule",
+          "module": "reject",
+          "version": {
+            "rejects": [
+              "1.0.1"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "api",
+      "attributes": {
+        "org.gradle.usage": "java-api"
+      },
+      "dependencyConstraints": [
+        {
+          "group": "sustitutionrule",
+          "module": "substitute",
+          "version": {
+            "rejects": [
+              "1.0.0"
+            ]
+          },
+          "reason": "version 1.0.0 was accidentally released from dev_branch"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "directsubstitute",
+          "version": {
+            "rejects": [
+              "2.0.0"
+            ]
+          },
+          "reason": "version 2.0.0 was accidentally released from dev_branch"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "rangesubstitute",
+          "version": {
+            "rejects": [
+              "[2.0.0,2.5.0]"
+            ]
+          },
+          "reason": "range contains a bug"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "sub-all",
+          "version": {
+            "rejects": [
+              "+"
+            ]
+          },
+          "reason": "sub-all is pure evil"
+        },
+        {
+          "group": "rejectrule",
+          "module": "reject",
+          "version": {
+            "rejects": [
+              "1.0.1"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

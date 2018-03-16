@@ -1,0 +1,155 @@
+{
+  "formatVersion": "0.3",
+  "component": {
+    "group": "example.depman",
+    "module": "platform-rich",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "4.7-20180315091131+0000",
+      "buildId": "gil7qq2aqvcwbdaqrsn7kqh7ty"
+    }
+  },
+  "variants": [
+    {
+      "name": "runtime",
+      "attributes": {
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencyConstraints": [
+        {
+          "group": "sustitutionrule",
+          "module": "a",
+          "version": {
+            "prefers": "1.0.0"
+          }
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "arange0",
+          "version": {
+            "prefers": "1.0.0"
+          }
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "arange1",
+          "version": {
+            "prefers": "1.0.0"
+          }
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "asub",
+          "version": {
+            "prefers": "1.0.0"
+          }
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "substitute",
+          "version": {
+            "prefers": "1.0.1"
+          },
+          "reason": "Older versions are outdated or buggy"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "directsubstitute",
+          "version": {
+            "prefers": "2.1.0"
+          },
+          "reason": "Older versions are outdated or buggy"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "rangesubstitute",
+          "version": {
+            "prefers": "2.5.1"
+          },
+          "reason": "Older versions are outdated or buggy"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "sub-core",
+          "version": {
+            "prefers": "1.0.0"
+          },
+          "reason": "User sub-core (and never sub-all)"
+        }
+      ]
+    },
+    {
+      "name": "api",
+      "attributes": {
+        "org.gradle.usage": "java-api"
+      },
+      "dependencyConstraints": [
+        {
+          "group": "sustitutionrule",
+          "module": "a",
+          "version": {
+            "prefers": "1.0.0"
+          }
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "arange0",
+          "version": {
+            "prefers": "1.0.0"
+          }
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "arange1",
+          "version": {
+            "prefers": "1.0.0"
+          }
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "asub",
+          "version": {
+            "prefers": "1.0.0"
+          }
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "substitute",
+          "version": {
+            "prefers": "1.0.1"
+          },
+          "reason": "Older versions are outdated or buggy"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "directsubstitute",
+          "version": {
+            "prefers": "2.1.0"
+          },
+          "reason": "Older versions are outdated or buggy"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "rangesubstitute",
+          "version": {
+            "prefers": "2.5.1"
+          },
+          "reason": "Older versions are outdated or buggy"
+        },
+        {
+          "group": "sustitutionrule",
+          "module": "sub-core",
+          "version": {
+            "prefers": "1.0.0"
+          },
+          "reason": "User sub-core (and never sub-all)"
+        }
+      ]
+    }
+  ]
+}
