@@ -17,14 +17,15 @@ open class MyDeprecationPlugin: Plugin<Project> {
         project.setupMatchingStrategy()
 
         // This information could be retrieved from an external service
-        project.dependencies.blacklist("sustitutionrule:directsubstitute", "2.0.0")
-        project.dependencies.blacklist("sustitutionrule:substitute", "1.0.0")
+        project.dependencies.deprecate("sustitutionrule:directsubstitute", "2.0.0")
+        project.dependencies.deprecate("sustitutionrule:substitute", "1.0.0")
         // Lists all known versions of "rangesubstitute", but you could also implement/reuse range matching in the withDependencies.filter { }
-        project.dependencies.blacklist("sustitutionrule:rangesubstitute", "2.0.0")
-        project.dependencies.blacklist("sustitutionrule:rangesubstitute", "2.2.0")
+        project.dependencies.deprecate("sustitutionrule:rangesubstitute", "2.0.0")
+        project.dependencies.deprecate("sustitutionrule:rangesubstitute", "2.2.0")
     }
 
     private fun Project.setupMatchingStrategy() {
+        dependencies.attributesSchema.attribute(Attribute.of("", String::class.java)).compatibilityRules.add()
         val matchingStrategy = dependencies.attributesSchema.attribute(lifecycleAttribute)
         matchingStrategy.ordered { a1: Lifecycle, a2: Lifecycle ->
             a1.ordinal.compareTo(a2.ordinal)
@@ -36,7 +37,7 @@ open class MyDeprecationPlugin: Plugin<Project> {
         }
     }
 
-    private fun DependencyHandler.blacklist(module: String, version: String) {
+    private fun DependencyHandler.deprecate(module: String, version: String) {
         components.withModule(module) {
             if (id.version == version) {
                 allVariants {

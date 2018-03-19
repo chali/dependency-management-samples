@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "4.7-20180315091131+0000",
-      "buildId": "qkdope4cmjgivf4cp6hrwtxb3q"
+      "buildId": "nqmkduazmrhahjphqgdeam6f4u"
     }
   },
   "variants": [
@@ -29,7 +29,7 @@
               "1.0.0"
             ]
           },
-          "reason": "version 1.0.0 was accidentally released from dev_branch"
+          "reason": "version 1.0.0 is blacklisted because it was accidentally released from dev_branch"
         },
         {
           "group": "sustitutionrule",
@@ -39,7 +39,7 @@
               "2.0.0"
             ]
           },
-          "reason": "version 2.0.0 was accidentally released from dev_branch"
+          "reason": "version 2.0.0 is blacklisted because it was accidentally released from dev_branch"
         },
         {
           "group": "sustitutionrule",
@@ -49,7 +49,7 @@
               "[2.0.0,2.5.0]"
             ]
           },
-          "reason": "range contains a bug"
+          "reason": "range is blacklisted because it contains a bug"
         },
         {
           "group": "sustitutionrule",
@@ -86,7 +86,7 @@
               "1.0.0"
             ]
           },
-          "reason": "version 1.0.0 was accidentally released from dev_branch"
+          "reason": "version 1.0.0 is blacklisted because it was accidentally released from dev_branch"
         },
         {
           "group": "sustitutionrule",
@@ -96,7 +96,7 @@
               "2.0.0"
             ]
           },
-          "reason": "version 2.0.0 was accidentally released from dev_branch"
+          "reason": "version 2.0.0 is blacklisted because it was accidentally released from dev_branch"
         },
         {
           "group": "sustitutionrule",
@@ -106,7 +106,7 @@
               "[2.0.0,2.5.0]"
             ]
           },
-          "reason": "range contains a bug"
+          "reason": "range is blacklisted because it contains a bug"
         },
         {
           "group": "sustitutionrule",

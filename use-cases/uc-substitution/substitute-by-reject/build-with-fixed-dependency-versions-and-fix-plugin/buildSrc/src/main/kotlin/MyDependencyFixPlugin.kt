@@ -11,10 +11,12 @@ open class MyDependencyFixPlugin: Plugin<Project> {
         // This information could be retrieved from an external service
         project.configurations.substitute("sustitutionrule", "directsubstitute", "2.0.0", "2.1.0")
         project.dependencies.substitute("sustitutionrule", "substitute", "1.0.0", "1.0.1")
-        // Lists all known versions of "rangesubstitute", but you could also implement/reuse range matching in the withDependencies.filter { }
+
+        // Lists all known versions of "rangesubstitute"
+        // A limitation is that this does not do range matching. That is, you can not just do substitute("[2.0.0,2.5.0]", "2.5.1") and it will
+        // adjust all declaration that fit into the range.
         project.dependencies.substitute("sustitutionrule", "rangesubstitute", "2.0.0", "2.5.1")
         project.dependencies.substitute("sustitutionrule", "rangesubstitute", "2.2.0", "2.5.1")
-        project.dependencies.substitute("sustitutionrule", "sub-core", "2.2.0", "2.5.1")
 
         project.dependencies.substituteModule("sustitutionrule", "sub-all", "sub-core")
     }
