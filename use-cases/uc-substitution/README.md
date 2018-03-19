@@ -19,3 +19,23 @@ Here we illustrate several solutions utilizing both _attributes_ and _rejected v
   - [build-with-no-dependency-versions](substitute-by-reject/build-with-no-dependency-versions/build.gradle.kts)
   - [build-with-dependency-version-ranges](substitute-by-reject/build-with-dependency-version-ranges/build.gradle.kts)
 
+**Use Case 1: A platform team forbids/blacklist a certain version of a module**
+
+See: [uc-reject](../uc-reject/README.md)
+
+**Use Case 2: A platform team wants to deprecate a version of a module**
+
+All builds apply a [deprecation plugin](substitute-by-deprecation/build-with-no-dependency-versions/buildSrc/src/main/kotlin/MyDeprecationPlugin.kt).
+The plugin uses attributes to mark selected module versions as deprecated.
+The plugin can read information from an external service to update the deprecations without updating the plugin itself.
+The deprecation can break an existing build, which the build author has to update. 
+If necessary, an opt-out (using a deprecated version) is possible, but needs to be explicitly declared in the build.
+
+**Use Case 3: Following up a blacklisting/deprecation, a platform team wants to provide an automatic fix**
+
+_If builds use no versions or version ranges and the platform team provides a platform with dependency constraints:_
+The platform team publishes a new version of the platform with updated versions.
+
+_If builds use fixed versions but still fixes should be provided_:
+The platform team publishes a [plugin](substitute-by-deprecation/build-with-fixed-dependency-versions-and-fix-plugin/buildSrc/src/main/kotlin/MyDependencyFixPlugin.kt) with "fix" rules that replace certain versions.
+
