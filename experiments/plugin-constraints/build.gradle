@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url '../../use-cases/repository/maven'
+        }
+    }
+    dependencies {
+        constraints {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin") {
+                version {
+                    reject "1.5.5.RELEASE"
+                    prefer "1.5.9.RELEASE"
+                }
+            }
+        }
+        // Assuming the above is added to api configuration in a platform, the following works as well
+//        classpath("example.depman:platform-rich:1.0.2")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:[1.5,2.0)")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    testImplementation("junit:junit")
+}
