@@ -1,0 +1,94 @@
+{
+  "formatVersion": "0.3",
+  "builtBy": {
+    "gradle": {}
+  },
+  "component": {
+    "group": "org",
+    "module": "main-module",
+    "version": "1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "variants": [
+    {
+      "name": "api",
+      "attributes": {
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "main-module-1.0.jar",
+          "url": "main-module-1.0.jar"
+        }
+      ],
+      "dependencies": [
+        {
+          "group": "org.apache.cassandra",
+          "module": "cassandra-all",
+          "version": {
+            "prefers": "3.11.1",
+            "rejects": []
+          }
+        }
+      ],
+      "dependencyConstraints": [
+      ]
+    },
+    {
+      "name": "runtime",
+      "attributes": {
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "main-module-1.0.jar",
+          "url": "main-module-1.0.jar"
+        }
+      ],
+      "dependencies": [
+        {
+          "group": "org.apache.cassandra",
+          "module": "cassandra-all",
+          "version": {
+            "prefers": "3.11.1",
+            "rejects": []
+          }
+        }
+      ],
+      "dependencyConstraints": [
+      ]
+    },
+    {
+      "name": "test-runtime",
+      "attributes": {
+        "org.gradle.usage": "test-java-runtime"
+      },
+      "files": [
+        {
+          "name": "main-module-1.0.jar",
+          "url": "main-module-1.0.jar"
+        }
+      ],
+      "dependencies": [
+        {
+          "group": "org.cassandraunit",
+          "module": "cassandra-unit",
+          "version": {
+            "prefers": "3.3.0.2",
+            "rejects": []
+          },
+          "excludes": [
+            {
+              "group": "org.apache.cassandra",
+              "module": "cassandra-all"
+            }
+          ]
+        }
+      ],
+      "dependencyConstraints": [
+      ]
+    }
+  ]
+}
