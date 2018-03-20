@@ -31,7 +31,7 @@ open class MyDependencyFixPlugin: Plugin<Project> {
                     (dependency as ExternalModuleDependency).version {
                         prefer(to)
                     }
-                    dependency.because("Build script auto-fix for $group.$name: substituted $from with $to")
+                    dependency.because("Build script auto-fix for $group:$name, substituted $from with $to")
                 }
             }
         }
@@ -49,7 +49,7 @@ open class MyDependencyFixPlugin: Plugin<Project> {
                         dependency.version {
                             prefer(to)
                         }
-                        dependency.because("$currentModule - published metadata fix for dependency $group.$name: substituted $from with $to")
+                        dependency.because("$currentModule - published metadata fix for dependency $group:$name, substituted $from with $to")
                     }
                 }
             }
@@ -63,7 +63,7 @@ open class MyDependencyFixPlugin: Plugin<Project> {
                 withDependencies {
                     filter { it.group == group && it.name == from }.forEach { dependency ->
                         add("$group:$to:${dependency.versionConstraint.preferredVersion}") {
-                            because("$currentModule - published metadata fix for dependency $group.$from: substituted with $group.$from")
+                            because("$currentModule - published metadata fix for dependency $group:$from, substituted with $group:$to")
                         }
                         remove(dependency)
                     }
