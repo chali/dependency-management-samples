@@ -1,5 +1,3 @@
-import org.gradle.api.internal.attributes.CompatibilityRule
-
 plugins {
     application
 }
