@@ -12,21 +12,16 @@ dependencies {
     implementation("replacerule:replacementex0:1.0.0")
     implementation("replacerule:replacementex1:1.0.0")
 
-    //this could be published (see comments below), or rules could be be provided by plugin
+    // the information added in this metadata rule could be published (see comments below),
+    // or the rule could be be provided by a plugin
     components {
-        withModule("replacerule:replacee") {
-            val version = id.version
-            allVariants {
-                withCapabilities {
-                    addCapability("replacerule", "replacee", version) //latest 4.7 nightly would add this automatically (same GAV as module)
-                }
-            }
-        }
         withModule("replacerule:replacement") {
             val version = id.version
             allVariants {
                 withCapabilities {
-                    addCapability("replacerule", "replacee", version) //if replacement knows that it replaces 'replacee', this can be published with replacement
+                    // If replacement knows that it replaces 'replacee' when it is published,
+                    // this capability can be published
+                    addCapability("replacerule", "replacee", version)
                 }
             }
         }
