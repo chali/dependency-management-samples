@@ -39,3 +39,10 @@ The platform team publishes a new version of the platform with updated versions.
 _If builds use fixed versions but still fixes should be provided_:
 The platform team publishes a [plugin](substitute-by-deprecation/build-with-fixed-dependency-versions-and-fix-plugin/buildSrc/src/main/kotlin/MyDependencyFixPlugin.kt) with "fix" rules that replace certain versions.
 
+**Feedback / Questions**
+
+How to solve substitution of one module by another module? Original example sub-all -> sub-core.
+Substitution range to one version (Deprecate the whole range) is not implemented. Will it be or we have to do it?
+Right now we are proving fixes for deprecation as part of our rule. Do we need deprecation or just applying fix plugin would work? My understanding is that after all features are implemented FixPlugin won't be neccessary.
+Example how to opt out from the platform provided rule (prefer is probably easy. how about reject, strict?)
+

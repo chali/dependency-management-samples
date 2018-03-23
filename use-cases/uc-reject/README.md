@@ -8,3 +8,7 @@ All builds depend on this platform.
 The platform team adds a reject for the blacklisted version.
 The builds use version ranges and will automatically match other versions that are not rejected.
 If no version can be found after a reject was added, a build author needs to update the corresponding build.
+
+**Feedback / Questions**
+
+Do we have any escape path for project which would like to go agains platform recommendation?

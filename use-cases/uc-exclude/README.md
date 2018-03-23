@@ -5,3 +5,7 @@ Such rules can be shared among builds via simple plugins.
 
 The rules can be applied by a simple plugin using the component metadata rules API.
 The plugin can read information from an external service to update the rules without updating the plugin itself.
+
+**Feedback / Questions**
+
+Looks good.

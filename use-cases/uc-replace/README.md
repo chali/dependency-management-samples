@@ -11,3 +11,8 @@ The library publishes the information that the module at the new GA provides the
 
 The platform team provides a simple plugin that adds the missing capability information.
 All builds apply the plugin.
+
+**Feedback / Questions**
+
+Which option would be recommended?
+I would need explain details of replace-with-variants
