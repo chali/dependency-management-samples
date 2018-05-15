@@ -1,0 +1,12 @@
+// Using afterProject makes sure configuration will exist when referenced below
+afterProject { project ->
+    project.dependencies {
+        constraints {
+            implementation('org.slf4j:slf4j-api') {
+                version {
+                    prefer '1.7.22'
+                }
+            }
+        }
+    }
+}
