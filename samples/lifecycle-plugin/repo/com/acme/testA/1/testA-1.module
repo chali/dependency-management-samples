@@ -5,7 +5,7 @@
     "module": "testA",
     "version": "1",
     "attributes": {
-      "org.example.gradle.lifecycle": "DEPRECATED"
+      "org.example.gradle.lifecycle": "ALIVE"
     }
   },
   "variants": [
